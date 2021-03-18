@@ -1,0 +1,52 @@
+@use 'variables';
+
+.line{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    align-items: center;
+    span{
+        border-top: variables.$line-color solid 0.5px;
+    }
+    h1{
+        text-align: center;
+    }
+    form{
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+}
+::after{
+    clear: both;
+}
+.sort-line{
+    grid-template-columns: 35% 30% 35%;
+}
+
+.page-nav{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    ul{
+        list-style-type: none;
+        li{
+            display: inline-block;
+            span{
+                text-align: center;
+                display: block;
+                padding: 4px 8px;
+                margin: 0 4px;
+                border: variables.$ocean-blue 1px solid;
+                opacity: 0.8;
+                border-radius: 3px;
+                font-size: 14px;
+                cursor: pointer;
+                &:hover{
+                    color: variables.$orange;
+                }
+            }
+        }
+    }
+}

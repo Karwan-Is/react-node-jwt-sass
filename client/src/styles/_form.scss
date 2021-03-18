@@ -1,0 +1,62 @@
+@use 'variables';
+
+.form{
+    border: solid variables.$border-color 1px;
+    border-radius: 10px;
+    padding: 20px 50px;
+    h1{
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    input{
+        width: 100%;
+        margin-bottom: 15px;
+        color: black;
+        &::placeholder{
+            color: variables.$border-color;
+        }
+    }
+    button{
+        display: block;
+        padding: 8px 16px;
+        margin: 0 auto;
+        font-size: 14px;
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: variables.$orange;
+        &:hover{
+            color: variables.$navy-blue;
+        }
+    }
+    
+}
+
+.signin{
+    width: 300px;
+    margin: 0 auto;
+}
+.signup{
+    width: 350px;
+    margin: 0 auto;
+    .form-wrapper{
+        display: grid;
+        grid-template-columns: 30% 60%;
+        column-gap: 10%;
+        select{
+            height: 20px;
+        }
+    }
+}
+
+.error-wrapper{
+    position: relative;
+    p{
+        width: 200px;
+        position: absolute;
+        color: variables.$error-color;
+        top: 0;
+        right: -240px;
+    }
+}

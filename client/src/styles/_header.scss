@@ -1,0 +1,106 @@
+@use 'variables';
+
+.banner{
+    height: 100px;
+    h1 {
+        font-size: 40px;
+        padding:20px 0;
+        text-align: center;
+    }
+}
+
+.dropdown {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    list-style-type: none;
+    height: 51px;
+    background-color: variables.$navy-blue;
+    padding: 0 30px;
+    z-index: 2;
+    .drop-btn{
+        display: none;
+        cursor: pointer;
+        padding: 4px 6px 8px;
+        span {
+            display: block;
+            width: 45px;
+            height: 6px;
+            margin-top: 6px;
+            background: variables.$white;
+            border-radius: 3px;
+        }
+    }
+    .dropdown-content{
+        display: flex;
+        justify-content: left;
+        width: 70%;
+    }
+    .nav-right {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 30%;
+    } 
+    a {
+        // border: solid tomato 1px;
+        text-align: center;
+        display: block;
+        padding: 16px 20px;
+        text-decoration: none;
+        background-color: variables.$navy-blue;
+        &:hover {
+            color: variables.$orange;
+        }
+    }
+    p {
+        text-align: center;
+        display: block;
+        padding: 16px 20px;
+        background-color: variables.$navy-blue;
+    }
+}   
+
+.search{
+    position: relative;
+    padding: 12px 0;
+    padding-left: 10px;
+    img{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+    input{
+        position: absolute;
+        color: variables.$navy-blue;
+        font-size: 16px;
+        padding: 2px 0;
+        left: -165px;
+        top: 55px;
+    }
+    .search-wrapper{
+        position: absolute;
+        width: 225px;
+        top: 85px;
+        left: -165px;
+        .search-poster{
+            display: grid;
+            grid-template-columns: 70px 153px;
+            margin-bottom: 2px;
+            border: solid 1px variables.$line-color;
+            img{
+                width: 96%;
+                height: 96%;
+                padding: 2%;
+            }
+            .search-title{
+                background-color: variables.$navy-blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                a{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

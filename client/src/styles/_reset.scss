@@ -1,0 +1,55 @@
+@use 'variables';
+
+body,
+a,
+div,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+img,
+label,
+input,
+form,
+header,
+nav,
+section, 
+article,
+button,
+footer {
+    margin: 0;
+    padding: 0;
+    color: variables.$white;
+}
+
+body {
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.main-container{
+    width: 1200px;
+    margin: 30px auto;
+    min-height: 520px;
+}
+
+.clear{
+    clear: both;
+}

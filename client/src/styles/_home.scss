@@ -1,0 +1,73 @@
+@use 'variables';
+
+.preview{
+    display: flex;
+    justify-content: space-between;
+    height: 478px;
+}
+
+/********** Slide Show **********/
+.slide-show{
+    position: relative;
+    width: 65%;
+    border: variables.$border-color 0.5px solid;
+    .slide-show-wrapper{
+        height: 100%;
+        span{
+            position: absolute;
+            padding: 10px 8px;
+            top: 45%;
+            font-size: 26px;
+            cursor: pointer;
+            opacity: 0.4;
+            background-color: variables.$navy-blue;
+            &:hover{
+                opacity: 0.8;
+                transition: 0.5s;
+            }
+        }
+        .next-slide{
+            right: 10px;
+        }
+        .prev-slide{
+            left: 10px;
+        }
+    }
+}
+
+/********** Box Office **********/
+
+.box-office{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    .box-office-wrapper{
+        display: flex;
+        padding: 5px 0;
+        height: 85px;
+        border-top: 0.5px variables.$line-color solid;
+        &:last-child{
+            border-bottom: 0.5px variables.$line-color solid;
+        }
+        .box-office-poster{
+            width: 15.5%;
+        }
+        .box-office-details{
+            display: flex;
+            width: 83%;
+            h2{
+                width: 22%;
+                padding: 27px 0;
+                color: variables.$orange;
+                text-align: center;
+            }
+            h3{
+                padding: 10px 0;
+            }
+            span{
+                color: variables.$ocean-blue;
+                font-size: 12px;
+            }
+        }
+    }
+}
