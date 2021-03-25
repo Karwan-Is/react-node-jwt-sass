@@ -3,7 +3,7 @@ const User = require('../models/Users')
 const keys = require('../config/keys')
 
 const createToken = (id) => {
-  return jwt.sign({ id }, keys.session.cookieKey, {
+  return jwt.sign({ id }, keys.COOKIE_AND_SESSION_KEYS.COOKIE_KEY, {
     expiresIn: 3 * 24 * 60 * 60
   })
 }

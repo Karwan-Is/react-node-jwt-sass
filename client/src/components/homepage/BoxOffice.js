@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react'
 
 const BoxOffice = () => {
-    const [boxOffice, setBoxOffice] = useState()
-
+    const [boxOffice, setBoxOffice] = useState(null)
     useEffect(() => {
+
         try {
-            const result = async () => {
-                await fetch('/boxoffice')
-                    .then(res => res.json())
-                    .then(data => {
-                        setBoxOffice(data)
-                    })
-                    .catch(err => { console.log(err) })
-            }
-            result()
+            fetch('/boxoffice')
+                .then(res => res.json())
+                .then(data => {
+                    setBoxOffice(data)
+                })
+                .catch(err => { console.log(err) })
         }
         catch (err) {
             console.log(err)
         }
+
     }, [])
 
     return (

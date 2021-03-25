@@ -8,7 +8,7 @@ const episodeRoutes = require('./routes/episodeRoutes')
 const userRoutes = require('./routes/userRoutes')
 const boxOfficeRoutes = require('./routes/boxOfficeRoutes')
 const slideShowsRoutes = require('./routes/slideShowsRoutes')
-const { checkUser } = require('./middleware/userMiddlewares')
+const { checkUser } = require('./middlewares/userMiddleware')
 const keys = require('./config/keys')
 
 const app = express()
@@ -17,7 +17,7 @@ const port = 4000
 app.use(express.json())
 app.use(cookieParser())
 
-const userURI = keys.mongoose.URI
+const userURI = keys.MONGOOSE.URI
 mongoose.connect(userURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => app.listen(port, () => {
         console.log("Listening for request on port 4000...")
@@ -26,13 +26,9 @@ mongoose.connect(userURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.get('/user', checkUser)
 app.use('/', userRoutes)
+app.use('/', boxOfficeRoutes)
+app.use('/', slideShowsRoutes)
 app.use('/', movieRoutes)
 app.use('/', seriesRoutes)
 app.use('/', seasonRoutes)
 app.use('/', episodeRoutes)
-app.use('/', boxOfficeRoutes)
-app.use('/', slideShowsRoutes)
-
-app.use((req, res) =>{
-    res.status(400)
-})

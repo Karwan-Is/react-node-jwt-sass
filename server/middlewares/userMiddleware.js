@@ -5,7 +5,7 @@ const keys = require('../config/keys')
 const checkUser = async (req, res, next) => {
     const token = req.cookies.jwt
     if (token) {
-        jwt.verify(token, keys.session.cookieKey, async (err, decodedToken) => {
+        jwt.verify(token, keys.COOKIE_AND_SESSION_KEYS.COOKIE_KEY, async (err, decodedToken) => {
             if (err) {
                 res.json(null)
                 next()

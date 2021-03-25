@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const SeriesPosters = ({ firstPoster, numOfPosters, sorted, genre }) => {
     const [seriesPosters, setSeriesPosters] = useState()
     const startingPoster = firstPoster || 0
+    
     useEffect(() => {
         try {
             fetch('/series')

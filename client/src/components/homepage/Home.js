@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import MoviePosters from './MoviePosters'
+import MoviePosters from '../movies/MoviePosters'
 import SlideShow from './SlideShow'
 import BoxOffice from './BoxOffice'
-import SeriesPosters from './SeriesPosters'
+import SeriesPosters from '../series/SeriesPosters'
 
 const Home = () => {
     const [width, setWidth] = useState(window.innerWidth)

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const MoviesPosters = ({ firstPoster, numOfPosters, sorted, genre }) => {
     const [moviePosters, setMoviePosters] = useState()
     const startingPoster = firstPoster || 0
+
     useEffect(() => {
         try {
             fetch('/movies', {
@@ -26,27 +27,27 @@ const MoviesPosters = ({ firstPoster, numOfPosters, sorted, genre }) => {
     return (
         <div className="posters">
             {moviePosters ? (
-                moviePosters.slice(startingPoster, startingPoster + numOfPosters).map(movie => {
+                moviePosters.slice(startingPoster, startingPoster + numOfPosters).map(movies => {
                     return (
-                        <Link to={"/moviedetails/" + movie._id} key={movie._id}>
+                        <Link to={"/moviedetails/" + movies._id} key={movies._id}>
                             <div className="poster-wrapper">
-                                <img src={movie.poster} alt="Movie Poster"></img>
+                                <img src={movies.poster} alt="Movie Poster"></img>
                                 <div className="shade"></div>
                                 <div className="duration">
-                                    <span>{movie.duration}</span>
+                                    <span>{movies.duration}</span>
                                 </div>
                                 <div className="view">
-                                    <span>{movie.seen}</span>
+                                    <span>{movies.seen}</span>
                                 </div>
                                 <div className="poster-extra">
-                                    <h2 className="rate">{movie.rate}</h2>
-                                    <p className="language">{"Language: " + movie.language}</p>
+                                    <h2 className="rate">{movies.rate}</h2>
+                                    <p className="language">{"Language: " + movies.language}</p>
                                     <div className="age-rate">
-                                        <h3>{movie.age_rate}</h3>
+                                        <h3>{movies.age_rate}</h3>
                                     </div>
                                 </div>
                             </div>
-                            <h3 className="poster-title">{movie.title}</h3>
+                            <h3 className="poster-title">{movies.title}</h3>
                         </Link>
                     )
                 })

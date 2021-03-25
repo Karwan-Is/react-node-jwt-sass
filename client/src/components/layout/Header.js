@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import searchIcon from '../images/search_icon.svg.png'
+import searchIcon from '../../images/search_icon.svg.png'
+import { UserContext } from '../../contexts/UserContext'
 
 
 const Header = () => {
@@ -9,21 +10,12 @@ const Header = () => {
     const [searchData, setSearchData] = useState({})
     const [result, setResult] = useState({})
     const [isLoading, setIsLoading] = useState(false)
-    const [isUser, setIsUser] = useState('')
+
+    const { user } = useContext(UserContext)
 
 
     useEffect(() => {
         window.addEventListener("resize", handleWidth)
-        const result = async () => {
-            await fetch('/user')
-                .then(res => res.json())
-                .then(data => {
-                    if (data) {
-                        setIsUser(data)
-                    }
-                })
-        }
-        result()
 
         try {
             fetch('/search')
@@ -41,7 +33,7 @@ const Header = () => {
         return () => {
             window.removeEventListener("resize", handleWidth)
         }
-    }, [isUser, searchData])
+    }, [searchData, user])
 
     const dropDown = () => {
         setIsDown(!isDown)
@@ -95,7 +87,7 @@ const Header = () => {
     const SignedIn = (
         <>
             <li><Link to='/' onClick={handleSignOut}>SignOut</Link></li>
-            <li> <p>{isUser}</p></li>
+            <li> <p>{user}</p></li>
         </>
     )
 
@@ -120,7 +112,7 @@ const Header = () => {
                         <li><Link to='/contact'>Contact Us</Link></li>
                     </div>
                     <div onClick={handleClick} className={isDown ? "show-right nav-right" : "hide-right nav-right"}>
-                        {isUser ? SignedIn : SignedOut}
+                        {user ? SignedIn : SignedOut}
                     </div>
                     <div className="search">
                         <div onClick={handleSearching}>

@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../contexts/UserContext'
 
 const SeriesDetails = (props) => {
     const [series, setSeries] = useState()
     const [isLoading, setIsLoading] = useState(false)
 
+    const { user } = useContext(UserContext)
+
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        const result = async () => {
-            await fetch('/series/' + props.match.params.id)
+        try {
+            fetch('/series/' + props.match.params.id)
                 .then(res => res.json())
                 .then(series => {
                     setSeries(series)
                     setIsLoading(true)
                 })
         }
-        result()
-    }, [props.match.params.id])
+        catch (err) {
+            console.log(err)
+        }
+
+    }, [props.match.params.id, user])
 
     return (
         <div>
@@ -47,9 +53,16 @@ const SeriesDetails = (props) => {
                             <span className="details-line details-bottom-line" />
                         </div>
                     </div>
-                    <Link to={"/watchepisode/" + series._id} className="watch-online">
-                        <h3>WATCH ONLINE</h3>
-                    </Link>
+                    {user ? (
+                        <Link to={"/watchepisode/" + series._id} className="watch-online">
+                            <h3>WATCH ONLINE</h3>
+                        </Link>
+                    ) : (
+                        <Link to={"/signin"} className="watch-online">
+                            <h3>WATCH ONLINE</h3>
+                        </Link>
+                    )}
+
                     <div className="trailer">
                         <iframe src={series.trailer} frameBorder="0" title="Movie Trailer" allowFullScreen></iframe>
                     </div>

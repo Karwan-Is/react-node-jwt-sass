@@ -7,15 +7,12 @@ const SlideShow = () => {
     useEffect(() => {
 
         try {
-            const result = async () => {
-                await fetch('/movies')
-                    .then(res => res.json())
-                    .then(data => setSlideShow(data.map(slide => {
-                        return slide.land_poster
-                    })))
-                    .catch(err => console.log(err))
-            }
-            result()
+            fetch('/movies')
+                .then(res => res.json())
+                .then(data => setSlideShow(data.map(slide => {
+                    return slide.land_poster
+                })))
+                .catch(err => console.log(err))
         }
         catch (err) {
             console.log(err)

@@ -1,4 +1,4 @@
-import PostersWrapper from './PostersWrapper'
+import PostersWrapper from '../PostersWrapper'
 
 const Series = () => {
     return (

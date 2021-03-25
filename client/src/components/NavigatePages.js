@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import MoviePosters from './MoviePosters'
-import SeriesPosters from './SeriesPosters'
+import MoviePosters from './movies/MoviePosters'
+import SeriesPosters from './series/SeriesPosters'
 
 const PageNav = ({ isMovie, numOfPosters, sorted, genre }) => {
     const [firstPoster, setFirstPoster] = useState(0)
@@ -9,9 +9,15 @@ const PageNav = ({ isMovie, numOfPosters, sorted, genre }) => {
 
     useEffect(() => {
 
-        fetch('/movies')
-            .then(res => res.json())
-            .then(data => setNumOfPages(data.length))
+        try {
+            fetch('/movies')
+                .then(res => res.json())
+                .then(data => setNumOfPages(data.length))
+                .catch(err => console.log(err))
+        }
+        catch(err){
+            console.log(err)
+        }
 
     }, [isMovie, currentPage, numOfPosters])
 
@@ -55,7 +61,7 @@ const PageNav = ({ isMovie, numOfPosters, sorted, genre }) => {
                 setFirstPoster(numOfPosters * number)
             }
         }
-        else{
+        else {
             if (currentPage < (Math.floor(numOfPages / numOfPosters)) - 1) {
                 setCurrentPage(number)
                 setFirstPoster(numOfPosters * number)
